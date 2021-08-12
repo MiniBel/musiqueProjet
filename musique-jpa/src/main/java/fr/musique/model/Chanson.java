@@ -7,7 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "chanson")
@@ -24,16 +29,21 @@ public class Chanson {
 	@Column(name = "CHA_DUREE")
 	private int duree;
 
+	@ManyToMany
+	@JoinTable(name = "cha_alb", joinColumns = @JoinColumn(name = "IDCHANSON", referencedColumnName = "CHA_ID") , inverseJoinColumns = @JoinColumn(name = "IDALBUM", referencedColumnName = "ALB_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
+			"IDCHANSON", "IDALBUM" }) )
+	private List<Album> albums;
+
+	@ManyToMany(mappedBy = "chansons")
 	private List<Playlist> playlists;
 
-	private List<Genre> genres;
-	
-	
-	
-	public Chanson(){
-		
-	}
+	@ManyToOne
+	@JoinColumn(name = "CHA_GENRE_ID")
+	private Genre genre;
 
+	public Chanson() {
+
+	}
 
 	public Chanson(String titre, int duree) {
 		super();
@@ -41,58 +51,52 @@ public class Chanson {
 		this.duree = duree;
 	}
 
-
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getTitre() {
 		return titre;
 	}
-
 
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
 
-
 	public int getDuree() {
 		return duree;
 	}
-
 
 	public void setDuree(int duree) {
 		this.duree = duree;
 	}
 
-
 	public List<Playlist> getPlaylists() {
 		return playlists;
 	}
-
 
 	public void setPlaylists(List<Playlist> playlists) {
 		this.playlists = playlists;
 	}
 
-
-	public List<Genre> getGenres() {
-		return genres;
+	public Genre getGenre() {
+		return genre;
 	}
 
-
-	public void setGenres(List<Genre> genres) {
-		this.genres = genres;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
-	
-	
-	
-	
+
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
 
 }

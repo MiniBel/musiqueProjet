@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name  = "playlist")
+@Table(name = "playlist")
 public class Playlist {
 
 	@Id
@@ -24,16 +29,14 @@ public class Playlist {
 	@Column(name = "PLA_DUREE_TOTAL")
 	private int dureeTotal;
 
-	
+	@ManyToMany
+	@JoinTable(name = "pla_cha", joinColumns = @JoinColumn(name = "IDPLAYLIST", referencedColumnName = "PLA_ID") , inverseJoinColumns = @JoinColumn(name = "IDCHANSON", referencedColumnName = "CHA_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
+			"IDPLAYLIST", "IDCHANSON" }) )
 	private List<Chanson> chansons;
 
-	private List<Album> albums;
-
-	private List<Artiste> artistes;
-
+	@ManyToOne
+	@JoinColumn(name = "PLA_COMPTE_ID")
 	private Compte compte;
-	
-	
 
 	public Playlist() {
 		super();
@@ -75,22 +78,6 @@ public class Playlist {
 
 	public void setChansons(List<Chanson> chansons) {
 		this.chansons = chansons;
-	}
-
-	public List<Album> getAlbums() {
-		return albums;
-	}
-
-	public void setAlbums(List<Album> albums) {
-		this.albums = albums;
-	}
-
-	public List<Artiste> getArtistes() {
-		return artistes;
-	}
-
-	public void setArtistes(List<Artiste> artistes) {
-		this.artistes = artistes;
 	}
 
 	public Compte getCompte() {

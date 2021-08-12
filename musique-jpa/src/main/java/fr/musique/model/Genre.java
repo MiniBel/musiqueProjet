@@ -22,16 +22,15 @@ public class Genre {
 	@Column(name = "GEN_NOM", length = 100, nullable = false)
 	private String nom;
 
-	
+	@ManyToMany(mappedBy = "genres")
 	private List<Artiste> artistes;
 
-	
+	@ManyToMany(mappedBy = "genres")
 	private List<Album> albums;
 
-	
+	@OneToMany(mappedBy = "genre")
 	private List<Chanson> chansons;
 
-	
 	public int getId() {
 		return id;
 	}

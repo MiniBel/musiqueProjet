@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,10 +27,10 @@ public class Compte {
 	private String password;
 
 	@ManyToOne
-	@JoinColumn (name = "COM_UTILISATEUR_ID")
+	@JoinColumn(name = "COM_UTILISATEUR_ID")
 	private Utilisateur utilisateur;
 
-	
+	@OneToMany(mappedBy = "compte")
 	private List<Playlist> playlists;
 
 	public int getId() {
