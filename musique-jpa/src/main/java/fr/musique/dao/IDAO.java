@@ -6,7 +6,7 @@ public interface IDAO<T, Id> {
 
 	public List<T> findAll();
 
-	public T findById();
+	public T findById(Id id);
 
 	public T insert(T entity);
 
