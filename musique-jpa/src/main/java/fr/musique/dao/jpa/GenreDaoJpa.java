@@ -19,4 +19,10 @@ public class GenreDaoJpa extends AbstractDaoJpa<Genre> implements IGenreDao {
 		return em.find(Genre.class, id);
 	}
 
+	@Override
+	public Genre findByName(String nom) {
+		return em.createQuery("select g from Genre g where g.nom = ?1", Genre.class).setParameter(1, nom)
+				.getSingleResult();
+	}
+
 }

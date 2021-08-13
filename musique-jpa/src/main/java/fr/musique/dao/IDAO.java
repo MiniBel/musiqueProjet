@@ -2,11 +2,13 @@ package fr.musique.dao;
 
 import java.util.List;
 
-public interface IDAO<T, Id> {
+public interface IDAO<T, Id, Nom> {
 
 	public List<T> findAll();
 
 	public T findById(Id id);
+	
+	public T findByName(Nom nom);
 
 	public T insert(T entity);
 

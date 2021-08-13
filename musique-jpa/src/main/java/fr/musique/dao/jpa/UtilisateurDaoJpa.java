@@ -5,13 +5,11 @@ import java.util.List;
 import fr.musique.dao.IUtilisateurDao;
 import fr.musique.model.Utilisateur;
 
-public class UtilisateurDaoJpa extends AbstractDaoJpa<Utilisateur> implements IUtilisateurDao{
+public class UtilisateurDaoJpa extends AbstractDaoJpa<Utilisateur> implements IUtilisateurDao {
 
 	@Override
 	public List<Utilisateur> findAll() {
-		return em
-				.createQuery("select u from Utilisateur u", Utilisateur.class)
-				.getResultList();
+		return em.createQuery("select u from Utilisateur u", Utilisateur.class).getResultList();
 	}
 
 	@Override
@@ -19,6 +17,10 @@ public class UtilisateurDaoJpa extends AbstractDaoJpa<Utilisateur> implements IU
 		return em.find(Utilisateur.class, id);
 	}
 
-
+	@Override
+	public Utilisateur findByName(String nom) {
+		// ne pas utiliser
+		return null;
+	}
 
 }

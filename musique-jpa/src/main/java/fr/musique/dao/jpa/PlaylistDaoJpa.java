@@ -27,4 +27,10 @@ public class PlaylistDaoJpa extends AbstractDaoJpa<Playlist> implements IPlaylis
 		return super.save(entity);
 	}
 
+	@Override
+	public Playlist findByName(String nom) {
+		return em.createQuery("select p from Playlist p where p.nom = ?1", Playlist.class).setParameter(1, nom)
+				.getSingleResult();
+	}
+
 }

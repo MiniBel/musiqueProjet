@@ -19,4 +19,10 @@ public class ChansonDaoJpa extends AbstractDaoJpa<Chanson> implements IChansonDa
 		return em.find(Chanson.class, id);
 	}
 
+	@Override
+	public Chanson findByName(String nom) {
+		return em.createQuery("select c from Chanson c where c.titre = ?1", Chanson.class).setParameter(1, nom)
+				.getSingleResult();
+	}
+
 }

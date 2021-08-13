@@ -28,4 +28,9 @@ public class AlbumDaoJpa extends AbstractDaoJpa<Album> implements IAlbumDao{
 		return super.save(entity);
 	}
 
+	@Override
+	public Album findByName(String nom) {
+		return em.createQuery("select a from Album a where a.nom = ?1", Album.class).setParameter(1, nom).getSingleResult();
+	}
+
 }

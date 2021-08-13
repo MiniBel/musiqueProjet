@@ -17,4 +17,9 @@ public class ArtisteDaoJpa extends AbstractDaoJpa<Artiste> implements IArtisteDa
 		return em.find(Artiste.class, id);
 	}
 
+	@Override
+	public Artiste findByName(String nom) {
+		return em.createQuery("select a from Artiste a where a.nom = ?1", Artiste.class).setParameter(1, nom).getSingleResult();
+	}
+
 }
