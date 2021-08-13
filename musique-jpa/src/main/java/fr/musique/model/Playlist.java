@@ -42,10 +42,9 @@ public class Playlist {
 		super();
 	}
 
-	public Playlist(String nom, int dureeTotal) {
+	public Playlist(String nom) {
 		super();
 		this.nom = nom;
-		this.dureeTotal = dureeTotal;
 	}
 
 	public int getId() {

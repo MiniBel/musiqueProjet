@@ -49,11 +49,10 @@ public class Album {
 
 	}
 
-	public Album(String nom, LocalDate dateParution, int dureeTotal) {
+	public Album(String nom, LocalDate dateParution) {
 		super();
 		this.nom = nom;
 		this.dateParution = dateParution;
-		this.dureeTotal = dureeTotal;
 	}
 
 	public int getId() {
