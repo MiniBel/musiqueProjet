@@ -6,6 +6,13 @@
 	<persistence-unit name="MusiqueUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
+		<class>fr.musique.model.Utilisateur</class>
+		<class>fr.musique.model.Compte</class>
+		<class>fr.musique.model.Album</class>
+		<class>fr.musique.model.Artiste</class>
+		<class>fr.musique.model.Chanson</class>
+		<class>fr.musique.model.Genre</class>
+		<class>fr.musique.model.Playlist</class>
 		
 		<!-- Eventuellement d'autres classes d'Entité -->
 		
