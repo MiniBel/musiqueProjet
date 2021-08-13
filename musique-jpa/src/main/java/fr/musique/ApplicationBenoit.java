@@ -9,18 +9,21 @@ import fr.musique.dao.IArtisteDao;
 import fr.musique.dao.IChansonDao;
 import fr.musique.dao.ICompteDao;
 import fr.musique.dao.IGenreDao;
+import fr.musique.dao.IPlaylistDao;
 import fr.musique.dao.IUtilisateurDao;
 import fr.musique.dao.jpa.AlbumDaoJpa;
 import fr.musique.dao.jpa.ArtisteDaoJpa;
 import fr.musique.dao.jpa.ChansonDaoJpa;
 import fr.musique.dao.jpa.CompteDaoJpa;
 import fr.musique.dao.jpa.GenreDaoJpa;
+import fr.musique.dao.jpa.PlaylistDaoJpa;
 import fr.musique.dao.jpa.UtilisateurDaoJpa;
 import fr.musique.model.Album;
 import fr.musique.model.Artiste;
 import fr.musique.model.Chanson;
 import fr.musique.model.Compte;
 import fr.musique.model.Genre;
+import fr.musique.model.Playlist;
 import fr.musique.model.Utilisateur;
 
 public class ApplicationBenoit {
@@ -32,15 +35,18 @@ public class ApplicationBenoit {
 		IGenreDao daoGenre = new GenreDaoJpa();
 		IChansonDao daoChanson = new ChansonDaoJpa();
 		IAlbumDao daoAlbum = new AlbumDaoJpa();
+		IPlaylistDao daoPlaylist = new PlaylistDaoJpa();
 		// ajoutUtilisateur(daoUtilisateur);
 		// ajoutCompte(daoCompte);
 		// associationCompteUtilisateur(daoUtilisateur, daoCompte);
 
-		//ajoutGenre(daoGenre);
-		//ajoutArtiste(daoArtiste, daoGenre);
-		//ajoutAlbum(daoAlbum);
-		ajoutChanson(daoChanson, daoAlbum);
-		
+		// ajoutGenre(daoGenre);
+		// ajoutArtiste(daoArtiste, daoGenre);
+		// ajoutAlbum(daoAlbum);
+		// ajoutChanson(daoChanson, daoAlbum);
+		// ajoutPlaylist(daoPlaylist, daoChanson);
+		//associationComptePlaylist(daoPlaylist, daoCompte);
+		afficherPlaylist(daoPlaylist);
 	}
 
 	public static void ajoutUtilisateur(IUtilisateurDao daoUtilisateur) {
@@ -61,32 +67,35 @@ public class ApplicationBenoit {
 		compte.setUtilisateur(util);
 		daoCompte.update(compte);
 	}
-	public static void ajoutGenre(IGenreDao daoGenre){
+
+	public static void ajoutGenre(IGenreDao daoGenre) {
 		Genre genre = new Genre("Metal");
 		daoGenre.save(genre);
 	}
-	public static void ajoutArtiste(IArtisteDao daoArtiste, IGenreDao daoGenre){
+
+	public static void ajoutArtiste(IArtisteDao daoArtiste, IGenreDao daoGenre) {
 		Artiste artiste = new Artiste("IRON MAIDEN");
 		Genre genre = daoGenre.findByName("Metal");
 		artiste.setGenres(new ArrayList<>());
 		artiste.getGenres().add(genre);
-		
+
 		daoArtiste.save(artiste);
 	}
-	public static void ajoutChanson(IChansonDao daoChanson, IAlbumDao daoAlbum){
+
+	public static void ajoutChanson(IChansonDao daoChanson, IAlbumDao daoAlbum) {
 		Chanson chanson = new Chanson("If Eternity Should Fail", 508);
 		Chanson chanson2 = new Chanson("Speed of Light", 301);
 		Chanson chanson3 = new Chanson("The Great Unknown", 397);
-		
+
 		Album album = daoAlbum.findByName("The Book of Souls");
-		
+
 		chanson.setAlbums(new ArrayList<>());
 		chanson.getAlbums().add(album);
 		chanson2.setAlbums(new ArrayList<>());
 		chanson2.getAlbums().add(album);
 		chanson3.setAlbums(new ArrayList<>());
 		chanson3.getAlbums().add(album);
-		
+
 		daoChanson.save(chanson);
 		daoChanson.save(chanson2);
 		daoChanson.save(chanson3);
@@ -96,13 +105,33 @@ public class ApplicationBenoit {
 		album.getChansons().add(chanson3);
 		daoAlbum.save(album);
 	}
-	public static void ajoutAlbum(IAlbumDao daoAlbum){
+
+	public static void ajoutAlbum(IAlbumDao daoAlbum) {
 		Album album = new Album("The Book of Souls", LocalDate.of(2015, 9, 04));
-		
+
 		daoAlbum.save(album);
 	}
-	
-	
-	
-	
+
+	public static void ajoutPlaylist(IPlaylistDao daoPlaylist, IChansonDao daoChanson) {
+		Playlist playlist = new Playlist("maPlaylist");
+		Chanson chanson = daoChanson.findByName("If Eternity Should Fail");
+		playlist.setChansons(new ArrayList<>());
+		playlist.getChansons().add(chanson);
+		daoPlaylist.save(playlist);
+	}
+
+	public static void associationComptePlaylist(IPlaylistDao daoPlaylist, ICompteDao daoCompte) {
+		Compte compte = daoCompte.findByName("afqf@adqsd.com");
+		Playlist playlist = daoPlaylist.findByName("maPlaylist");
+		playlist.setCompte(compte);
+		daoPlaylist.save(playlist);
+	}
+
+	public static void afficherPlaylist(IPlaylistDao daoPlaylist) {
+		Playlist playlist = daoPlaylist.findByName("maPlaylist");
+		for (Chanson c : playlist.getChansons()){
+			System.out.println("mes musiques");
+			System.out.println(c.getTitre());
+		}
+	}
 }
