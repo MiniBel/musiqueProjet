@@ -8,10 +8,13 @@ public class DurationService {
 
 	public int calculDureeTotal(List<Chanson> chansons) {
 		int dureeTotal = 0;
-		for (Chanson cha : chansons) {
-			dureeTotal += cha.getDuree();
+		if (chansons != null) {
+			for (Chanson cha : chansons) {
+				dureeTotal += cha.getDuree();
+			}
+		} else {
+			dureeTotal = 0;
 		}
-
 		return dureeTotal;
 	}
 
