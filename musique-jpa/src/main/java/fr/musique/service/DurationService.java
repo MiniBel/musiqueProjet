@@ -2,8 +2,11 @@ package fr.musique.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import fr.musique.model.Chanson;
 
+@Service
 public class DurationService {
 
 	public int calculDureeTotal(List<Chanson> chansons) {
