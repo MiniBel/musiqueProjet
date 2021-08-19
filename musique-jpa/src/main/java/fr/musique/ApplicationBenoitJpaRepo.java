@@ -13,16 +13,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import fr.musique.config.AppConfig;
 import fr.musique.dao.IAlbumDaoJpaRepository;
 import fr.musique.dao.IArtisteDaoJpaRepository;
+import fr.musique.dao.IChansonDaoJpaRepository;
 import fr.musique.dao.ICompteDaoJpaRepository;
 import fr.musique.dao.IGenreDaoJpaRepository;
+import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.dao.IUtilisateurDaoJpaRepository;
 import fr.musique.model.Album;
 import fr.musique.model.Artiste;
 import fr.musique.model.Chanson;
 import fr.musique.model.Compte;
 import fr.musique.model.Genre;
+import fr.musique.model.Playlist;
 import fr.musique.model.Utilisateur;
 import fr.musique.service.ChansonService;
+import fr.musique.service.DurationService;
 
 public class ApplicationBenoitJpaRepo {
 
@@ -37,12 +41,21 @@ public class ApplicationBenoitJpaRepo {
 
 	@Autowired
 	private IArtisteDaoJpaRepository daoArtiste;
-	
+
 	@Autowired
 	private IAlbumDaoJpaRepository daoAlbum;
-	
+
+	@Autowired
+	private IChansonDaoJpaRepository daoChanson;
+
+	@Autowired
+	private IPlaylistDaoJpaRepository daoPlaylist;
+
 	@Autowired
 	private ChansonService srvChanson;
+
+	@Autowired
+	private DurationService srvDuration;
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -90,15 +103,33 @@ public class ApplicationBenoitJpaRepo {
 
 		artiste = daoArtiste.save(artiste);
 	}
-	
+
 	@Transactional
-	public void ajoutChansonAlbum(){
-		Chanson chanson = new Chanson("La fête est finie", 183);
-		Album album = daoAlbum.findByNom("La fête est finie");
-		
-		
-		
+	public void ajoutChansonAlbum() {
+
+		Album album = new Album("La fête est finie", LocalDate.of(2017, 10, 20));
+
+		album = daoAlbum.save(album);
+
+		Chanson chanson = daoChanson.findByTitre("San");
+
 		srvChanson.addChansonToAlbum(chanson, album);
+
+		Chanson chanson2 = daoChanson.findByTitre("La fête est finie");
+
+		srvChanson.addChansonToAlbum(chanson2, album);
+	}
+
+	public void ajoutPlaylistAssociationChanson() {
+		Playlist playlist = new Playlist("PlaylistN1");
+		playlist = daoPlaylist.save(playlist);
+		Chanson chanson = daoChanson.findByTitre("San");
+
+		srvChanson.addChansonToPlayList(chanson, playlist);
+
+		Chanson chanson2 = daoChanson.findByTitre("If Eternity Should Fail");
+
+		srvChanson.addChansonToPlayList(chanson2, playlist);
 	}
 
 }

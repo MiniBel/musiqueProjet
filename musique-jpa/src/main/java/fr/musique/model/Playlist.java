@@ -29,6 +29,9 @@ public class Playlist {
 	@Column(name = "PLA_DUREE_TOTAL")
 	private int dureeTotal;
 
+	@Column(name = "PLA_NOMBRE_CHANSON")
+	private int nombreChanson;
+
 	@ManyToMany
 	@JoinTable(name = "pla_cha", joinColumns = @JoinColumn(name = "IDPLAYLIST", referencedColumnName = "PLA_ID") , inverseJoinColumns = @JoinColumn(name = "IDCHANSON", referencedColumnName = "CHA_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
 			"IDPLAYLIST", "IDCHANSON" }) )
@@ -85,6 +88,14 @@ public class Playlist {
 
 	public void setCompte(Compte compte) {
 		this.compte = compte;
+	}
+
+	public int getNombreChanson() {
+		return nombreChanson;
+	}
+
+	public void setNombreChanson(int nombreChanson) {
+		this.nombreChanson = nombreChanson;
 	}
 
 }

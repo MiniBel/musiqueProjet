@@ -32,6 +32,9 @@ public class Album {
 	@Column(name = "ALB_DUREE_TOTAL")
 	private int dureeTotal;
 
+	@Column(name = "ALB_NOMBRE_CHANSON")
+	private int nombreChanson;
+
 	@ManyToMany
 	@JoinTable(name = "alb_art", joinColumns = @JoinColumn(name = "IDALBUM", referencedColumnName = "ALB_ID") , inverseJoinColumns = @JoinColumn(name = "IDARTISTE", referencedColumnName = "ART_ID") , uniqueConstraints = @UniqueConstraint(columnNames = {
 			"IDALBUM", "IDARTISTE" }) )
@@ -109,6 +112,14 @@ public class Album {
 
 	public void setArtistes(List<Artiste> artistes) {
 		this.artistes = artistes;
+	}
+
+	public int getNombreChanson() {
+		return nombreChanson;
+	}
+
+	public void setNombreChanson(int nombreChanson) {
+		this.nombreChanson = nombreChanson;
 	}
 
 }

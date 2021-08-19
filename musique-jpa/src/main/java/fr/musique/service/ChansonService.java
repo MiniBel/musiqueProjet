@@ -43,6 +43,9 @@ public class ChansonService {
 		a.getChansons().add(c);
 		int duration = srvDuration.calculDureeTotal(a.getChansons());
 		a.setDureeTotal(duration);
+		
+		int nombreChanson = srvDuration.CalculNombreChanson(a.getChansons());
+		a.setNombreChanson(nombreChanson);
 
 		a = daoAlbum.save(a);
 		
@@ -63,6 +66,9 @@ public class ChansonService {
 		p.getChansons().add(c);
 		int duration = srvDuration.calculDureeTotal(p.getChansons());
 		p.setDureeTotal(duration);
+		
+		int nombreChanson = srvDuration.CalculNombreChanson(p.getChansons());
+		p.setNombreChanson(nombreChanson);
 
 		// sauvegarde de la chanson & la playlist
 		c = daoChanson.save(c);

@@ -21,4 +21,15 @@ public class DurationService {
 		return dureeTotal;
 	}
 
+	public int CalculNombreChanson(List<Chanson> chansons) {
+		int nombreChanson = 0;
+		if (chansons != null) {
+			for (Chanson cha : chansons) {
+				nombreChanson += 1;
+			}
+		} else {
+			nombreChanson = 0;
+		}
+		return nombreChanson;
+	}
 }
