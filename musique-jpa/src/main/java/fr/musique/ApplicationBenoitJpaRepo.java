@@ -121,7 +121,7 @@ public class ApplicationBenoitJpaRepo {
 	}
 
 	public void ajoutPlaylistAssociationChanson() {
-		Playlist playlist = new Playlist("PlaylistN2");
+		Playlist playlist = new Playlist("PlaylistN3");
 		playlist = daoPlaylist.save(playlist);
 		Chanson chanson = daoChanson.findByTitre("San");
 
