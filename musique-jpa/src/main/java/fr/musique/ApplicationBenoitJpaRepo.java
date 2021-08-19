@@ -60,7 +60,7 @@ public class ApplicationBenoitJpaRepo {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
 
-		myContext.getBeanFactory().createBean(ApplicationBenoitJpaRepo.class).ajoutChansonAlbum();
+		myContext.getBeanFactory().createBean(ApplicationBenoitJpaRepo.class).ajoutPlaylistAssociationChanson();
 
 	}
 
@@ -121,7 +121,7 @@ public class ApplicationBenoitJpaRepo {
 	}
 
 	public void ajoutPlaylistAssociationChanson() {
-		Playlist playlist = new Playlist("PlaylistN1");
+		Playlist playlist = new Playlist("PlaylistN2");
 		playlist = daoPlaylist.save(playlist);
 		Chanson chanson = daoChanson.findByTitre("San");
 
