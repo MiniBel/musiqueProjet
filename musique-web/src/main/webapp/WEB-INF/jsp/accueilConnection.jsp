@@ -58,7 +58,7 @@
 				</div>
 				<div style="margin-top: 30px;">
 					<p>Vous n'avez pas de compte !?</p>
-					<a href="creationCompte.html">
+					<a href="royalty-inscription">
 						<button type="button" class="btn btn-danger">S'inscrire
 							:)</button>
 					</a>
