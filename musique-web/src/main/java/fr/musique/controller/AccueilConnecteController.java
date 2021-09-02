@@ -10,4 +10,9 @@ public class AccueilConnecteController {
 	public String affichage(){
 		return "accueilConnecte";
 	}
+	
+	@GetMapping("/accueil-connecte-administrateur")
+	public String affichageAdmin(){
+		return "accueilConnecteAdministrateur";
+	}
 }
