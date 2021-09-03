@@ -44,9 +44,11 @@
 					</button>
 					<div class="collapse" id="home-collapse">
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							<li><a href="royalty-artistes-util" class="link-light rounded;">Artistes</a></li>
+							<li><a href="royalty-artistes-util"
+								class="link-light rounded;">Artistes</a></li>
 							<li><a href="royalty-albums-util" class="link-light rounded">Albums</a></li>
-							<li><a href="royalty-chansons-util" class="link-light rounded">Chansons</a></li>
+							<li><a href="royalty-chansons-util"
+								class="link-light rounded">Chansons</a></li>
 						</ul>
 					</div>
 				</li>
@@ -64,6 +66,7 @@
 							<c:forEach items="${ playlists }" var="playlist">
 								<li><a href="#" class="link-light rounded">${ playlist.nom }</a></li>
 
+
 							</c:forEach>
 
 							<button
@@ -75,9 +78,12 @@
 
 							</button>
 							<div class="collapse" id="newPlaylist-collapse">
-								<input type="text" class="form-control mt-2 mb-2"
-									id="nouvellePlaylist" placeholder="Ajouter playlist">
-								<button type="submit" class="btn btn-light">Valider</button>
+								<form method="POST">
+									<input type="text" class="form-control mt-2 mb-2"
+										id="nouvellePlaylist" placeholder="Ajouter playlist"
+										name="nom">
+									<button type="submit" class="btn btn-light">Valider</button>
+								</form>
 							</div>
 
 						</ul>
@@ -93,6 +99,7 @@
 					</button>
 					<div class="collapse" id="account-collapse">
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a href="royalty-mesPlaylists" class="link-light rounded">Voir mes playlists</a></li>
 							<li><a href="#" class="link-light rounded">Mon profil</a></li>
 							<li><a href="#" class="link-light rounded">Paramètres</a></li>
 							<li><a href="accueil.html" class="link-light rounded">Se

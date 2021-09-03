@@ -12,6 +12,7 @@ import fr.musique.dao.IArtisteDaoJpaRepository;
 import fr.musique.dao.IChansonDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Chanson;
+import fr.musique.model.Playlist;
 
 @Controller
 public class ChansonController {
@@ -29,6 +30,15 @@ public class ChansonController {
 		return "chansonListe";
 		
 	}
+	
+	@PostMapping("/royalty-chansons-util")
+	public String ajoutPlaylist(Playlist playlist) {
+
+		daoPlaylist.save(playlist);
+
+		return "redirect:/royalty-chansons-util";
+	}
+	
 	
 	
 }
