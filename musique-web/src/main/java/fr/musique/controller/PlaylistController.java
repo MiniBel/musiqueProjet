@@ -45,4 +45,11 @@ public class PlaylistController {
 		return "redirect:/royalty-mesPlaylists";
 	}
 
+	@PostMapping("/royalty-mesPlaylists")
+	public String ajoutPlaylist(Playlist playlist) {
+
+		daoPlaylist.save(playlist);
+
+		return "redirect:/royalty-mesPlaylists";
+	}
 }
