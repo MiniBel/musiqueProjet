@@ -8,20 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 
 @Controller
-public class AccueilConnecteController {
-	
+public class PlaylistController {
+
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
-
-	@GetMapping("/accueil-connecte")
-	public String affichage(Model model){
-		model.addAttribute("playlists", daoPlaylist.findAll());
-		
-		return "accueilConnecte";
-	}
 	
-	@GetMapping("/accueil-connecte-administrateur")
-	public String affichageAdmin(){
-		return "accueilConnecteAdministrateur";
-	}
+	
+	
 }

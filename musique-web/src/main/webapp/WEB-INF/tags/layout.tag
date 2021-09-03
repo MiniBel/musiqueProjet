@@ -1,4 +1,5 @@
 <%@ attribute name="title"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html >
 <html>
@@ -27,26 +28,28 @@
 
 			<ul class="list-unstyled ps-0"
 				style="margin-top: 20px; font-size: 25px;">
-				<a href="accueilConnect.html">
+				<a href="accueil-connecte">
 					<button class="btn btn-toggle align-items-center rounded"
 						style="background-color: #02a675; width: 275px; height: 85px;">
 						<i class="bi bi-house" style="font-size: 25px;"></i>
 						<h4>Accueil</h4>
 					</button>
 				</a>
-				<li class="mb-3"style="margin-top:50px">
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#home-collapse" aria-expanded="true" style="background-color: #02a675;width: 200px;height: 50px;">
-                            <h4>Musique</h4>
-                        </button>
-                        <div class="collapse" id="home-collapse">
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="royalty-artistes" class="link-light rounded;">Artistes</a></li>
-                                <li><a href="royalty-albums" class="link-light rounded">Albums</a></li>
-                                <li><a href="royalty-chansons" class="link-light rounded">Chansons</a></li>
-                            </ul>
-                        </div>
-                    </li>
+				<li class="mb-3" style="margin-top: 50px">
+					<button class="btn btn-toggle align-items-center rounded collapsed"
+						data-bs-toggle="collapse" data-bs-target="#home-collapse"
+						aria-expanded="true"
+						style="background-color: #02a675; width: 200px; height: 50px;">
+						<h4>Musique</h4>
+					</button>
+					<div class="collapse" id="home-collapse">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+							<li><a href="royalty-artistes-util" class="link-light rounded;">Artistes</a></li>
+							<li><a href="royalty-albums-util" class="link-light rounded">Albums</a></li>
+							<li><a href="royalty-chansons-util" class="link-light rounded">Chansons</a></li>
+						</ul>
+					</div>
+				</li>
 				<li class="mb-3" style="margin-top: 25px">
 					<button class="btn btn-toggle align-items-center rounded collapsed"
 						data-bs-toggle="collapse" data-bs-target="#dashboard-collapse"
@@ -58,6 +61,10 @@
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							<li><a href="#" class="link-light rounded">Favoris</a></li>
 							<li><a href="#" class="link-light rounded">Aimées</a></li>
+							<c:forEach items="${ playlists }" var="playlist">
+								<li><a href="#" class="link-light rounded">${ playlist.nom }</a></li>
+
+							</c:forEach>
 
 							<button
 								class="btn btn-toggle align-items-center rounded collapsed"
