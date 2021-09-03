@@ -9,7 +9,7 @@
 		<h3>Liste des chansons</h3>
 	</div>
 	<div>
-		<table class="table table-striped">
+		<table class="table table-striped text-center">
 			<thead>
 				<tr>
 					<th>Titre</th>
@@ -25,13 +25,16 @@
 					<tr>
 						<td>${ chanson.titre }</td>
 						<td>${ chanson.duree }</td>
-						<td><a href="#?id=${ chanson.id }" class="btn btn-primary">Voir
-								les albums</a></td>
-						<td><a href="#?id=${ chanson.id }" class="btn btn-primary">Voir
-								les artistes</a></td>
+						<td><a href="#?id=${ chanson.id }" class="btn"
+							style="width: 200px; background-color: #02a675">Voir les
+								albums</a></td>
+						<td><a href="#?id=${ chanson.id }" class="btn"
+							style="width: 200px; background-color: #02a675">Voir les
+								artistes</a></td>
 
-						<td><a href="#?id=${ chanson.id }" class="btn btn-primary">Ajouter
-								à la playlist</a></td>
+						<td><a href="#?id=${ chanson.id }" class="btn"
+							style="width: 200px; background-color: #02a675">Ajouter à la
+								playlist</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

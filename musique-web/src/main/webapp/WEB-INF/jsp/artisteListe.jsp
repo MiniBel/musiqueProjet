@@ -13,8 +13,8 @@
 			<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>Nom</th>
-							<th>Voir Albums</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Voir Albums</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -23,7 +23,7 @@
 								<td>${artiste.nom }</td>
 
 								<td>
-									<a href="voirAlbums?id=${artiste.id }" class="btn btn-primary">Voir ses albums</a>
+									<a href="voirAlbums?id=${artiste.id }" class="btn" style="width: 200px; background-color: #02a675">Voir ses albums</a>
 								</td>
 							</tr>
 						</c:forEach>
