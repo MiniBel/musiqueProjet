@@ -1,5 +1,8 @@
 package fr.musique.controller;
 
+import javax.transaction.Transactional;
+
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,5 +54,16 @@ public class PlaylistController {
 		daoPlaylist.deleteById(id);
 
 		return "redirect:/royalty-mesPlaylists";
+	}
+	
+	@GetMapping("/liste-chansons-playlist")
+	@Transactional
+	public String findAllChanson(@RequestParam int id, Model model){
+		Playlist playlist = daoPlaylist.findById(id).get();
+		
+		Hibernate.initialize(playlist.getChansons());
+		model.addAttribute("chansons", playlist.getChansons());
+		
+		return "chansonListePlaylist";
 	}
 }

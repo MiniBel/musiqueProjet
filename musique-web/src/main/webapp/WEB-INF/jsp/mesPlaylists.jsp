@@ -29,7 +29,7 @@
 						<td>${ playlist.nom }</td>
 						<td>${ playlist.dureeTotal }</td>
 						<td>${ playlist.nombreChanson }</td>
-						<td><a href="#?id=${ playlist.id}" class="btn"
+						<td><a href="liste-chansons-playlist?id=${ playlist.id}" class="btn"
 							style="width: 200px; background-color: #02a675">Voir les
 								chansons</a></td>
 						<td><a href="royalty-modifier-playlist?id=${ playlist.id}"
