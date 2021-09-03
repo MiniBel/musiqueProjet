@@ -61,10 +61,9 @@
 					</button>
 					<div class="collapse" id="dashboard-collapse">
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							<li><a href="#" class="link-light rounded">Favoris</a></li>
-							<li><a href="#" class="link-light rounded">Aimées</a></li>
+							
 							<c:forEach items="${ playlists }" var="playlist">
-								<li><a href="#" class="link-light rounded">${ playlist.nom }</a></li>
+								<li><a href="liste-chansons-playlist?id=${ playlist.id}" class="link-light rounded">${ playlist.nom }</a></li>
 
 
 							</c:forEach>
