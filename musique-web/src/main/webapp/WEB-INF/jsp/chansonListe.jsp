@@ -32,9 +32,17 @@
 							style="width: 200px; background-color: #02a675">Voir les
 								artistes</a></td>
 
-						<td><a href="#?id=${ chanson.id }" class="btn"
-							style="width: 200px; background-color: #02a675">Ajouter à la
-								playlist</a></td>
+						<td>
+							<form method="POST">
+								<select name="playlistId">
+									<c:forEach items="${playlists }" var="playlist">
+										<option value="${playlist.id }">${playlist.nom }</option>
+									</c:forEach>
+								</select> <input type="hidden" name="chansonId" value="${chanson.id }">
+								<input type="submit" class="btn  mt-3"
+									style="width: 200px; background-color: #02a675" value="Ajouter">
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

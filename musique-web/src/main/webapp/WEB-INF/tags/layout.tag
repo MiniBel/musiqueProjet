@@ -78,7 +78,7 @@
 
 							</button>
 							<div class="collapse" id="newPlaylist-collapse">
-								<form method="POST">
+								<form method="POST" action="royalty-ajouter-playlist">
 									<input type="text" class="form-control mt-2 mb-2"
 										id="nouvellePlaylist" placeholder="Ajouter playlist"
 										name="nom">

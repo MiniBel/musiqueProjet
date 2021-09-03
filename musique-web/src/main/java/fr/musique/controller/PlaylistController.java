@@ -22,6 +22,14 @@ public class PlaylistController {
 
 		return "mesPlaylists";
 	}
+	
+	@PostMapping("/royalty-ajouter-playlist")
+	public String ajoutPlaylist(Playlist playlist) {
+
+		daoPlaylist.save(playlist);
+
+		return "redirect:/royalty-mesPlaylists";
+	}
 
 	@GetMapping("/royalty-modifier-playlist")
 	public String modif(@RequestParam int id, Model model) {
@@ -41,14 +49,6 @@ public class PlaylistController {
 	@GetMapping("/royalty-supprimer-playlist")
 	public String delete(@RequestParam int id) {
 		daoPlaylist.deleteById(id);
-
-		return "redirect:/royalty-mesPlaylists";
-	}
-
-	@PostMapping("/royalty-mesPlaylists")
-	public String ajoutPlaylist(Playlist playlist) {
-
-		daoPlaylist.save(playlist);
 
 		return "redirect:/royalty-mesPlaylists";
 	}

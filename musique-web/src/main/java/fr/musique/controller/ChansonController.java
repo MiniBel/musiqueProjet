@@ -1,5 +1,7 @@
 package fr.musique.controller;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import fr.musique.dao.IChansonDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Chanson;
 import fr.musique.model.Playlist;
+import fr.musique.service.ChansonService;
 
 @Controller
 public class ChansonController {
@@ -21,6 +24,9 @@ public class ChansonController {
 	
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
+	
+	@Autowired
+	private ChansonService service;
 	
 
 	@GetMapping ("/royalty-chansons-util")
@@ -31,14 +37,14 @@ public class ChansonController {
 		
 	}
 	
+	
+	@Transactional
 	@PostMapping("/royalty-chansons-util")
-	public String ajoutPlaylist(Playlist playlist) {
-
-		daoPlaylist.save(playlist);
-
+	public String addChansonPlaylist(@RequestParam int playlistId, @RequestParam int chansonId){
+		Chanson chansonAAdd = daoChanson.findById(chansonId).get();
+		Playlist playlist = daoPlaylist.findById(playlistId).get();
+		service.addChansonToPlayList(chansonAAdd, playlist);
 		return "redirect:/royalty-chansons-util";
 	}
-	
-	
 	
 }

@@ -26,13 +26,5 @@ public class AlbumController {
 
 		return "albumListe";
 	}
-	
-	@PostMapping("/royalty-albums-util")
-	public String ajoutPlaylist(Playlist playlist) {
-
-		daoPlaylist.save(playlist);
-
-		return "redirect:/royalty-albums-util";
-	}
 
 }
