@@ -33,6 +33,7 @@
 		</div>
 		<div class="row">
 			<form class="row g-3" style="width: 500px; margin: 0 auto;" method="POST">
+				<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 				<div class="col-12">
 					<label for="inputEmail4" class="form-label">Email</label> <input
 						type="email" class="form-control" id="inputEmail4" name="email">
@@ -53,7 +54,7 @@
 						type="text" class="form-control" id="inputNom" name="nom">
 				</div>
 				<div class="col-12">
-					<label for="inputPrenom" class="form-label">Prénom</label> <input
+					<label for="inputPrenom" class="form-label">Prï¿½nom</label> <input
 						type="text" class="form-control" id="inputPrenom" name="prenom">
 				</div>
 				<div class="col-12">
@@ -83,7 +84,7 @@
 					</select>
 				</div>
 				<div class="col-md-4">
-					<label for="inputAnnee" class="form-label">Année</label> <input
+					<label for="inputAnnee" class="form-label">Annï¿½e</label> <input
 						type="text" class="form-control" id="inputAnnee" name="annee">
 				</div>
 
@@ -100,7 +101,7 @@
 			</form>
 		</div>
 		<div class="row text-center mt-3">
-			<label for="Connexion">Vous avez déjà un Compte ?</label> <a
+			<label for="Connexion">Vous avez dï¿½jï¿½ un Compte ?</label> <a
 				href="accueil-connection" style="color: #02a675;">Cliquez ici</a>
 		</div>
 	</div>

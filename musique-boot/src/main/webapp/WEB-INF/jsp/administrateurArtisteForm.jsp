@@ -72,7 +72,7 @@
 						<div class="collapse" id="dashboard-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a href="#" class="link-light rounded">Favoris</a></li>
-								<li><a href="#" class="link-light rounded">Aimées</a></li>
+								<li><a href="#" class="link-light rounded">Aimï¿½es</a></li>
 
 								<button
 									class="btn btn-toggle align-items-center rounded collapsed"
@@ -103,9 +103,9 @@
 						<div class="collapse" id="account-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a href="#" class="link-light rounded">Mon profil</a></li>
-								<li><a href="#" class="link-light rounded">Paramètres</a></li>
+								<li><a href="#" class="link-light rounded">Paramï¿½tres</a></li>
 								<li><a href="accueil.html" class="link-light rounded">Se
-										déconnecter</a></li>
+										dï¿½connecter</a></li>
 							</ul>
 						</div>
 					</li>
@@ -123,6 +123,7 @@
 					<h3>Modifier l'artiste</h3>
 				</c:if>
 				<form method="POST">
+					<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 					<div>
 						<label>Nom de l'artiste</label> <input type="text" name="nom"
 							value="${artiste.nom }">

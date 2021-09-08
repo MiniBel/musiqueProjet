@@ -23,8 +23,11 @@ public class Compte {
 	@Column(name = "COM_EMAIL", length = 50, nullable = false)
 	private String email;
 
-	@Column(name = "COM_PASSWORD", length = 50, nullable = false)
+	@Column(name = "COM_PASSWORD", length = 500, nullable = false)
 	private String password;
+
+	@Column(name = "COM_ADMIN", nullable = false)
+	private boolean admin;
 
 	@ManyToOne
 	@JoinColumn(name = "COM_UTILISATEUR_ID")
@@ -71,6 +74,14 @@ public class Compte {
 
 	public void setPlaylists(List<Playlist> playlists) {
 		this.playlists = playlists;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public Compte() {

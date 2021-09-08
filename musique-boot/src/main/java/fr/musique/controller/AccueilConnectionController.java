@@ -25,23 +25,23 @@ public class AccueilConnectionController {
 		return "accueilConnection";
 	}
 
-	@PostMapping("/accueil-connection")
-	public String connection(@RequestParam String email, @RequestParam String password, Model model) {
-		if (email.equals("admin@admin.com") && password.equals("admin1234")) {
-			return "redirect:/accueil-connecte-administrateur";
-		} else {
-			if (daoCompte.findByEmail(email) != null) {
-				if (daoCompte.findByEmail(email).getPassword().equals(password)) {
-					return "redirect:/accueil-connecte";
-				} else {
-					model.addAttribute("erreur", "Vous vous êtes trompé, béta !");
-					return "accueilConnection";
-				}
-			} else {
-				model.addAttribute("erreur", "Vous vous êtes trompé, béta !");
-				return "accueilConnection";
-			}
-		}
+	// @PostMapping("/accueil-connection")
+	// public String connection(@RequestParam String email, @RequestParam String password, Model model) {
+	// 	if (email.equals("admin@admin.com") && password.equals("admin1234")) {
+	// 		return "redirect:/accueil-connecte-administrateur";
+	// 	} else {
+	// 		if (daoCompte.findByEmail(email) != null) {
+	// 			if (daoCompte.findByEmail(email).getPassword().equals(password)) {
+	// 				return "redirect:/accueil-connecte";
+	// 			} else {
+	// 				model.addAttribute("erreur", "Vous vous ï¿½tes trompï¿½, bï¿½ta !");
+	// 				return "accueilConnection";
+	// 			}
+	// 		} else {
+	// 			model.addAttribute("erreur", "Vous vous ï¿½tes trompï¿½, bï¿½ta !");
+	// 			return "accueilConnection";
+	// 		}
+	// 	}
 
-	}
+	// }
 }

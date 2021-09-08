@@ -72,7 +72,7 @@
 						<div class="collapse" id="dashboard-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a href="#" class="link-light rounded">Favoris</a></li>
-								<li><a href="#" class="link-light rounded">Aimées</a></li>
+								<li><a href="#" class="link-light rounded">Aimï¿½es</a></li>
 
 								<button
 									class="btn btn-toggle align-items-center rounded collapsed"
@@ -103,9 +103,9 @@
 						<div class="collapse" id="account-collapse">
 							<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 								<li><a href="#" class="link-light rounded">Mon profil</a></li>
-								<li><a href="#" class="link-light rounded">Paramètres</a></li>
+								<li><a href="#" class="link-light rounded">Paramï¿½tres</a></li>
 								<li><a href="accueil.html" class="link-light rounded">Se
-										déconnecter</a></li>
+										dï¿½connecter</a></li>
 							</ul>
 						</div>
 					</li>
@@ -128,6 +128,7 @@
 			<div clas="row">
 				<div class="col-10">
 					<form method="POST" class="row" style="margin: 0 auto">
+						<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 						<div class="row mb-3">
 							<label>Nom</label> <input type="text" name="nom"
 								value="${ album.nom}">
@@ -158,7 +159,7 @@
 							</select>
 						</div>
 						<div class="col-md-4">
-							<label for="inputAnnee" class="form-label">Année</label> <input
+							<label for="inputAnnee" class="form-label">Annï¿½e</label> <input
 								type="text" class="form-control" id="inputAnnee" name="annee">
 						</div>
 						<%-- <div class="row mb-3">

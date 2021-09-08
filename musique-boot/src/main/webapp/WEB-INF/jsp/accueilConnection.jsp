@@ -33,10 +33,11 @@
 				<div style="margin-top: 45px;">
 					<h2>Se connecter :</h2>
 				</div>
-				<form method="POST" style="width: 300px; margin: 0 auto;">
+				<form method="POST" style="width: 300px; margin: 0 auto;"action="/perform_login">
+					<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 					<div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">Email</label> <input
-							type="email" name="email" class="form-control"
+							type="email" name="username" class="form-control"
 							id="exampleInputEmail1" aria-describedby="emailHelp">
 					</div>
 					<div class="mb-3">
@@ -79,7 +80,7 @@
 			</div>
 			<div class="col-md-4 text-center text-white"
 				style="margin-top: 50px;">
-				<h4>Profite de l'écoute et du téléchargement de milliers de
+				<h4>Profite de l'Ã©coute et du tï¿½lï¿½chargement de milliers de
 					chansons GRATUITEMENT.</h4>
 				<i class="bi bi-speaker" style="font-size: 50px;"></i> <i
 					class="bi bi-save-fill" style="font-size: 50px;"></i> <i
@@ -87,12 +88,12 @@
 			</div>
 			<div class="col-md-4 text-center text-white"
 				style="margin-top: 50px;">
-				<h4 style="margin-bottom: 38px;">Crée des playlists à l'infini
+				<h4 style="margin-bottom: 38px;">Crï¿½e des playlists ï¿½ l'infini
 					!</h4>
 				<i class="bi bi-collection-play" style="font-size: 50px;"></i>
 			</div>
 			<!-- <div class="col-12 text-center" style="color: #02a675;">
-                <h1>N'hésites plus et rejoins ROYALTY </h1>
+                <h1>N'hï¿½sites plus et rejoins ROYALTY </h1>
             </div> -->
 
 
