@@ -10,14 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import fr.musique.dao.IChansonDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
+import fr.musique.model.Chanson;
 import fr.musique.model.Playlist;
+import fr.musique.service.ChansonService;
 
 @Controller
 public class PlaylistController {
 
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
+
+	@Autowired
+	private IChansonDaoJpaRepository daoChanson;
+
+	@Autowired
+	private ChansonService service;
 
 	@GetMapping("/royalty-mesPlaylists")
 	public String mesPlaylists(Model model) {
@@ -63,9 +72,19 @@ public class PlaylistController {
 		
 		Hibernate.initialize(playlist.getChansons());
 		model.addAttribute("chansons", playlist.getChansons());
-
+		model.addAttribute("playlist", playlist);
 		model.addAttribute("playlists", daoPlaylist.findAll());
 		
 		return "chansonListePlaylist";
 	}
+
+	@PostMapping("/liste-chansons-playlist")
+	@Transactional
+	public String removeById(@RequestParam int playlistId, @RequestParam int chansonId){
+		Chanson chansonAsupp = daoChanson.findById(chansonId).get();
+		Playlist playlist = daoPlaylist.findById(playlistId).get();
+		service.removeChansonToPlayList(chansonAsupp, playlist);
+		return "redirect:/liste-chansons-playlist?id=" + playlistId;
+	}
+
 }

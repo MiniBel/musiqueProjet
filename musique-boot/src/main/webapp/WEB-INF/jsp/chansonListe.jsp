@@ -37,6 +37,7 @@
 
 										<td>
 											<form method="POST">
+												<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 												<select name="playlistId">
 													<c:forEach items="${playlists }" var="playlist">
 														<option value="${playlist.id }">${playlist.nom }</option>

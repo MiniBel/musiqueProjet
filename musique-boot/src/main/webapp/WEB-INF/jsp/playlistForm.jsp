@@ -19,7 +19,7 @@
 					value="${playlist.nom }">
 			</div>
 			<div>
-				<input type="submit" class="btn btn-danger value=" Modifier"/>
+				<input type="submit" class="btn btn-danger "value=" Modifier"/>
 			</div>
 		</form>
 

@@ -1,8 +1,10 @@
 package fr.musique.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import fr.musique.dao.IAlbumDaoJpaRepository;
@@ -64,6 +66,29 @@ public class ChansonService {
 		}
 		
 		p.getChansons().add(c);
+		int duration = srvDuration.calculDureeTotal(p.getChansons());
+		p.setDureeTotal(duration);
+		
+		int nombreChanson = srvDuration.CalculNombreChanson(p.getChansons());
+		p.setNombreChanson(nombreChanson);
+
+		// sauvegarde de la chanson & la playlist
+		c = daoChanson.save(c);
+		p = daoPlaylist.save(p);
+	}
+
+	public void removeChansonToPlayList(Chanson c, Playlist p) {
+		if (c.getPlaylists() == null){
+			c.setPlaylists(new ArrayList<>());
+		}
+	
+		c.getPlaylists().remove(p);
+		
+		if(p.getChansons() == null){
+			p.setChansons(new ArrayList<>());
+		}
+		
+		p.getChansons().remove(c);
 		int duration = srvDuration.calculDureeTotal(p.getChansons());
 		p.setDureeTotal(duration);
 		
