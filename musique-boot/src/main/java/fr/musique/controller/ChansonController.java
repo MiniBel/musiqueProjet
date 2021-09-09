@@ -2,6 +2,7 @@ package fr.musique.controller;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,6 +108,14 @@ public class ChansonController {
 		
 		service.addChansonToAlbum(chanson, albumAAjouter);
 		return "redirect:/royalty-detail-chanson?id=" + chansonId;
+	}
+
+	@GetMapping("/voirAlbumsChanson")
+	@Transactional
+	public String voirAlbum(@RequestParam int id, Model model){
+		Hibernate.initialize(daoChanson.findById(id).get().getAlbums());
+		model.addAttribute("albums", daoChanson.findById(id).get().getAlbums());
+		return "albumListe";
 	}
 	
 }

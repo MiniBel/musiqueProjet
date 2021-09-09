@@ -35,10 +35,10 @@
 										<td>${ album.dateParution }</td>
 										<td>${ album.dureeTotal }</td>
 										<td>${ album.nombreChanson }</td>
-										<td><a href="#?id=${ album.id}" class="btn"
+										<td><a href="voirArtistes?id=${ album.id}" class="btn"
 												style="width: 200px; background-color: #02a675">Voir les artistes</a>
 										</td>
-										<td><a href="#?id=${ album.id}" class="btn"
+										<td><a href="voirChansons?id=${ album.id}" class="btn"
 												style="width: 200px; background-color: #02a675">Voir les chansons</a>
 										</td>
 										<sec:authorize access="hasRole('ADMIN')">

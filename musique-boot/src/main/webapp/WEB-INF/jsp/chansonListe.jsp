@@ -15,7 +15,6 @@
 									<th>Titre</th>
 									<th>Durée</th>
 									<th>Album</th>
-									<th>Artiste</th>
 									<th></th>
 									<sec:authorize access="hasRole('ADMIN')">
 									<th>Modifier / Supprimer</th>
@@ -28,12 +27,10 @@
 									<tr>
 										<td>${ chanson.titre }</td>
 										<td>${ chanson.duree }</td>
-										<td><a href="#?id=${ chanson.id }" class="btn"
+										<td><a href="voirAlbumsChanson?id=${ chanson.id }" class="btn"
 												style="width: 200px; background-color: #02a675">Voir les
 												albums</a></td>
-										<td><a href="#?id=${ chanson.id }" class="btn"
-												style="width: 200px; background-color: #02a675">Voir les
-												artistes</a></td>
+										
 
 										<td>
 											<form method="POST">
