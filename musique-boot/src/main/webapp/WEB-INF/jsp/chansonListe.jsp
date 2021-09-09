@@ -53,6 +53,8 @@
 												class="btn btn-warning">Modifier</a>
 											<a href="royalty-supprimer-chanson?id=${ chanson.id }"
 												class="btn btn-danger">Supprimer</a>
+												<a href="royalty-detail-chanson?id=${ chanson.id }"
+													class="btn btn-info mb-1" style="width: 150px">Détails</a>
 										</td>
 									</sec:authorize>
 									</tr>

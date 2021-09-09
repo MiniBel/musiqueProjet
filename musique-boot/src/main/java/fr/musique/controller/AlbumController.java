@@ -89,6 +89,7 @@ public class AlbumController {
 	}
 
 	@GetMapping("/royalty-detail-album")
+	@IsAdmin
 	public String addArtiste (@RequestParam int id, Model model) {
 		Album album = daoAlbum.findById(id).get();
 
