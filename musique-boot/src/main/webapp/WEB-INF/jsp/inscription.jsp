@@ -101,7 +101,7 @@
 			</form>
 		</div>
 		<div class="row text-center mt-3">
-			<label for="Connexion">Vous avez d�j� un Compte ?</label> <a
+			<label for="Connexion">Vous avez déjà un Compte ?</label> <a
 				href="accueil-connection" style="color: #02a675;">Cliquez ici</a>
 		</div>
 	</div>

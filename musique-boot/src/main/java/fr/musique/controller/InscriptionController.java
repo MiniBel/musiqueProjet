@@ -3,6 +3,7 @@ package fr.musique.controller;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ public class InscriptionController {
 	@Autowired
 	private IUtilisateurDaoJpaRepository daoUtilisateur;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@GetMapping("/royalty-inscription")
 	public String inscription() {
 
@@ -36,7 +40,8 @@ public class InscriptionController {
 
 		if (daoCompte.findByEmail(email) == null) {
 			if (password.equals(passwordConfirm)) {
-				Compte compte = new Compte(email, password);
+				
+				Compte compte = new Compte(email, passwordEncoder.encode(password));
 
 				Utilisateur utilisateur = new Utilisateur(nom, prenom, LocalDate.of(annee, mois, jour));
 				daoUtilisateur.save(utilisateur);
@@ -46,12 +51,12 @@ public class InscriptionController {
 
 				return "redirect:/accueil-connecte";
 			} else {
-				model.addAttribute("erreur2", "mot de passe erroné");
+				model.addAttribute("erreur2", "mot de passe erronï¿½");
 				return "inscription";
 			}
 
 		} else {
-			model.addAttribute("erreur", "email déjà utilisé");
+			model.addAttribute("erreur", "email dï¿½jï¿½ utilisï¿½");
 			return "inscription";
 		}
 
