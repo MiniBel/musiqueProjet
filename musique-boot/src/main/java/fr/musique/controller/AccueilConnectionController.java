@@ -25,23 +25,4 @@ public class AccueilConnectionController {
 		return "accueilConnection";
 	}
 
-	// @PostMapping("/accueil-connection")
-	// public String connection(@RequestParam String email, @RequestParam String password, Model model) {
-	// 	if (email.equals("admin@admin.com") && password.equals("admin1234")) {
-	// 		return "redirect:/accueil-connecte-administrateur";
-	// 	} else {
-	// 		if (daoCompte.findByEmail(email) != null) {
-	// 			if (daoCompte.findByEmail(email).getPassword().equals(password)) {
-	// 				return "redirect:/accueil-connecte";
-	// 			} else {
-	// 				model.addAttribute("erreur", "Vous vous �tes tromp�, b�ta !");
-	// 				return "accueilConnection";
-	// 			}
-	// 		} else {
-	// 			model.addAttribute("erreur", "Vous vous �tes tromp�, b�ta !");
-	// 			return "accueilConnection";
-	// 		}
-	// 	}
-
-	// }
 }

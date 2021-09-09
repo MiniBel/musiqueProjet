@@ -1,5 +1,6 @@
 <%@ attribute name="title"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html >
 <html>
@@ -44,11 +45,20 @@
 					</button>
 					<div class="collapse" id="home-collapse">
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-							<li><a href="royalty-artistes-util"
+							<li><a href="royalty-artistes"
 								class="link-light rounded;">Artistes</a></li>
-							<li><a href="royalty-albums-util" class="link-light rounded">Albums</a></li>
-							<li><a href="royalty-chansons-util"
+							<sec:authorize access="hasRole('ADMIN')">
+								<li><a href="royalty-ajouter-artiste" class="link-light rounded;">Ajouter un artiste</a></li>
+							</sec:authorize>
+							<li><a href="royalty-albums" class="link-light rounded">Albums</a></li>
+							<sec:authorize access="hasRole('ADMIN')">
+								<li><a href="royalty-ajouter-album" class="link-light rounded;">Ajouter un album</a></li>
+							</sec:authorize>
+							<li><a href="royalty-chansons"
 								class="link-light rounded">Chansons</a></li>
+							<sec:authorize access="hasRole('ADMIN')">
+								<li><a href="royalty-ajouter-chanson" class="link-light rounded;">Ajouter une chanson</a></li>
+							</sec:authorize>
 						</ul>
 					</div>
 				</li>
@@ -78,6 +88,7 @@
 							</button>
 							<div class="collapse" id="newPlaylist-collapse">
 								<form method="POST" action="royalty-ajouter-playlist">
+									<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
 									<input type="text" class="form-control mt-2 mb-2"
 										id="nouvellePlaylist" placeholder="Ajouter playlist"
 										name="nom">
@@ -100,9 +111,9 @@
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							<li><a href="royalty-mesPlaylists" class="link-light rounded">Voir mes playlists</a></li>
 							<li><a href="#" class="link-light rounded">Mon profil</a></li>
-							<li><a href="#" class="link-light rounded">Paramètres</a></li>
-							<li><a href="accueil.html" class="link-light rounded">Se
-									déconnecter</a></li>
+							<li><a href="#" class="link-light rounded">Paramï¿½tres</a></li>
+							<li><a href="accueil-connection" class="link-light rounded">Se
+									dï¿½connecter</a></li>
 						</ul>
 					</div>
 				</li>

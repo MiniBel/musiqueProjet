@@ -63,6 +63,8 @@ public class PlaylistController {
 		
 		Hibernate.initialize(playlist.getChansons());
 		model.addAttribute("chansons", playlist.getChansons());
+
+		model.addAttribute("playlists", daoPlaylist.findAll());
 		
 		return "chansonListePlaylist";
 	}
