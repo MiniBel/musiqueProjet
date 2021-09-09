@@ -46,7 +46,9 @@
 													class="btn btn-warning mb-1" style="width: 150px">Modifier</a>
 												<a href="royalty-supprimer-album?id=${ album.id }"
 													class="btn btn-danger mb-1" style="width: 150px">Supprimer</a>
-											</td>
+													<a href="royalty-detail-album?id=${ album.id }"
+													class="btn btn-info mb-1" style="width: 150px">Détails</a>
+												</td>
 										</sec:authorize>
 
 									</tr>

@@ -14,6 +14,8 @@ import fr.musique.dao.IAlbumDaoJpaRepository;
 import fr.musique.dao.IArtisteDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Album;
+import fr.musique.model.Artiste;
+import fr.musique.service.ChansonService;
 
 @Controller
 public class AlbumController {
@@ -26,6 +28,9 @@ public class AlbumController {
 
 	@Autowired
 	private IArtisteDaoJpaRepository daoArtiste;
+
+	@Autowired
+	private ChansonService service;
 
 	@GetMapping("/royalty-albums")
 	public String listeAlbum(Model model) {
@@ -83,4 +88,22 @@ public class AlbumController {
 		return "redirect:/royalty-albums";
 	}
 
+	@GetMapping("/royalty-detail-album")
+	public String addArtiste (@RequestParam int id, Model model) {
+		Album album = daoAlbum.findById(id).get();
+
+		model.addAttribute("artistes", daoArtiste.findAll());
+		model.addAttribute("album", album);
+		model.addAttribute("playlists", daoPlaylist.findAll());
+		return "albumDetail";
+	}
+
+	@PostMapping("/royalty-detail-album")
+	public String addArtiste(@RequestParam int albumId, @RequestParam int artisteId) {
+
+		Artiste artisteAAjouter = daoArtiste.findById(artisteId).get();
+		Album album = daoAlbum.findById(albumId).get();
+		service.addArtisteToALbum(album, artisteAAjouter);
+		return "redirect:/royalty-detail-album?id=" + albumId;
+	}
 }

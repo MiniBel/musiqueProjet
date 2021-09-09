@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import fr.musique.dao.IAlbumDaoJpaRepository;
+import fr.musique.dao.IArtisteDaoJpaRepository;
 import fr.musique.dao.IChansonDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Album;
+import fr.musique.model.Artiste;
 import fr.musique.model.Chanson;
 import fr.musique.model.Playlist;
 
@@ -28,6 +30,9 @@ public class ChansonService {
 
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
+
+	@Autowired
+	private IArtisteDaoJpaRepository daoArtiste;
 
 	public void addChansonToAlbum(Chanson c, Album a) {
 		if (c.getAlbums() == null) {
@@ -98,5 +103,23 @@ public class ChansonService {
 		// sauvegarde de la chanson & la playlist
 		c = daoChanson.save(c);
 		p = daoPlaylist.save(p);
+	}
+
+	public void addArtisteToALbum(Album album, Artiste artiste) {
+		if (album.getArtistes() == null){
+			album.setArtistes(new ArrayList<>());
+		}
+
+		album.getArtistes().add(artiste);
+
+		if (artiste.getAlbums() == null){
+			artiste.setAlbums(new ArrayList<>());
+		}
+
+		artiste.getAlbums().add(album);
+
+		artiste = daoArtiste.save(artiste);
+		album = daoAlbum.save(album);
+
 	}
 }
