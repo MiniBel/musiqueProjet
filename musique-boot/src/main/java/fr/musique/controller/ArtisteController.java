@@ -28,8 +28,9 @@ public class ArtisteController {
 	
 	@GetMapping("/royalty-ajouter-artiste")
 	@IsAdmin
-	public String addArtiste() {
-		return "administrateurArtisteForm";
+	public String addArtiste(Model model) {
+		model.addAttribute("playlists", daoPlaylist.findAll());
+		return "artisteForm";
 	}
 
 	@PostMapping("/royalty-ajouter-artiste")
@@ -49,7 +50,8 @@ public class ArtisteController {
 	@IsAdmin
 	public String modifArtiste(@RequestParam int id, Model model) {
 		model.addAttribute("artiste", daoArtiste.findById(id).get());
-		return "administrateurArtisteForm";
+		model.addAttribute("playlists", daoPlaylist.findAll());
+		return "artisteForm";
 	}
 
 	@PostMapping("/royalty-modifier-artiste")

@@ -38,9 +38,10 @@ public class AlbumController {
 	@GetMapping("/royalty-ajouter-album")
 	@IsAdmin
 	public String ajoutAlbum(Model model) {
-		model.addAttribute("artistes", daoArtiste.findAll());
+		
+		model.addAttribute("playlists", daoPlaylist.findAll());
 
-		return "administrateurAlbumForm";
+		return "albumForm";
 	}
 
 	@GetMapping("/royalty-modifier-album")
@@ -48,9 +49,9 @@ public class AlbumController {
 	public String modifAlbum(Model model, @RequestParam int id) {
 		model.addAttribute("album", daoAlbum.findById(id).get());
 
-		model.addAttribute("artistes", daoArtiste.findAll());
+		model.addAttribute("playlists", daoPlaylist.findAll());
 
-		return "administrateurAlbumForm";
+		return "albumForm";
 	}
 
 	@PostMapping("/royalty-ajouter-album")

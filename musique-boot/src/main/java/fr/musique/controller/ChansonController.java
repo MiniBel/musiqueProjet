@@ -54,8 +54,9 @@ public class ChansonController {
 	@IsAdmin
 	public String ajouter(Model model) {
 		model.addAttribute("chansons", daoChanson.findAll());
-		
-		return "administrateurChansonForm";
+		model.addAttribute("playlists", daoPlaylist.findAll());
+
+		return "chansonForm";
 	}
 	
 	@GetMapping ("/royalty-modifier-chanson")
@@ -65,8 +66,8 @@ public class ChansonController {
 		
 		model.addAttribute("chanson", machansonAModifier);
 		model.addAttribute("albums", daoAlbum.findAll());
-		
-		return "administrateurChansonForm";
+		model.addAttribute("playlists", daoPlaylist.findAll());
+		return "chansonForm";
 	}
 	
 	@PostMapping ({"/royalty-modifier-chanson", "/royalty-ajouter-chanson"})
