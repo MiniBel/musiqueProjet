@@ -2,8 +2,10 @@ package fr.musique.controller;
 
 import javax.transaction.Transactional;
 
+import org.apache.catalina.authenticator.SpnegoAuthenticator.AuthenticateAction;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import fr.musique.annotation.IsAdmin;
 import fr.musique.dao.IAlbumDaoJpaRepository;
 import fr.musique.dao.IChansonDaoJpaRepository;
+import fr.musique.dao.ICompteDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Album;
 import fr.musique.model.Chanson;
@@ -26,6 +29,9 @@ public class ChansonController {
 	
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
+
+	@Autowired
+	private ICompteDaoJpaRepository daoCompte;
 	
 	@Autowired
 	private ChansonService service;
@@ -35,8 +41,8 @@ public class ChansonController {
 	
 
 	@GetMapping ("/royalty-chansons")
-	public String findAll(Model model){
-		model.addAttribute("playlists", daoPlaylist.findAll());
+	public String findAll(Model model, Authentication auth){
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 		model.addAttribute("chansons", daoChanson.findAll());
 		return "chansonListe";
 		
@@ -54,21 +60,21 @@ public class ChansonController {
 
 	@GetMapping ("/royalty-ajouter-chanson")
 	@IsAdmin
-	public String ajouter(Model model) {
+	public String ajouter(Model model, Authentication auth) {
 		model.addAttribute("chansons", daoChanson.findAll());
-		model.addAttribute("playlists", daoPlaylist.findAll());
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 
 		return "chansonForm";
 	}
 	
 	@GetMapping ("/royalty-modifier-chanson")
 	@IsAdmin
-	public String edit(@RequestParam int id, Model model) {
+	public String edit(@RequestParam int id, Model model, Authentication auth) {
 		Chanson machansonAModifier = daoChanson.findById(id).get();
 		
 		model.addAttribute("chanson", machansonAModifier);
 		model.addAttribute("albums", daoAlbum.findAll());
-		model.addAttribute("playlists", daoPlaylist.findAll());
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 		return "chansonForm";
 	}
 	

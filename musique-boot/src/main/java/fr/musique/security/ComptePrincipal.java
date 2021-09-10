@@ -30,6 +30,10 @@ public class ComptePrincipal implements UserDetails{
         return authorities;
     }
 
+    public int getId() {
+        return compte.getId();
+    }
+
     @Override
     public String getPassword() {
         

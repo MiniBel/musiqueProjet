@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-
 <!DOCTYPE html >
 <html>
 <head>
@@ -112,9 +111,9 @@
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							<li><a href="royalty-mesPlaylists" class="link-light rounded">Voir mes playlists</a></li>
 							<li><a href="#" class="link-light rounded">Mon profil</a></li>
-							<li><a href="#" class="link-light rounded">Paramètres</a></li>
+							<li><a href="#" class="link-light rounded">Param&egrave;tres</a></li>
 							<li><a href="accueil-connection" class="link-light rounded">Se
-									déconnecter</a></li>
+									d&eacute;connecter</a></li>
 						</ul>
 					</div>
 				</li>

@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.musique.annotation.IsAdmin;
 import fr.musique.dao.IArtisteDaoJpaRepository;
+import fr.musique.dao.ICompteDaoJpaRepository;
 import fr.musique.dao.IPlaylistDaoJpaRepository;
 import fr.musique.model.Artiste;
 
@@ -21,18 +23,20 @@ public class ArtisteController {
 	private IArtisteDaoJpaRepository daoArtiste;
 	@Autowired
 	private IPlaylistDaoJpaRepository daoPlaylist;
+	@Autowired
+	private ICompteDaoJpaRepository daoCompte;
 
 	@GetMapping("/royalty-artistes")
-	public String listArtiste(Model model) {
+	public String listArtiste(Model model, Authentication auth) {
 		model.addAttribute("artistes", daoArtiste.findAll());
-		model.addAttribute("playlists", daoPlaylist.findAll());
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 		return "artisteListe";
 	}
 	
 	@GetMapping("/royalty-ajouter-artiste")
 	@IsAdmin
-	public String addArtiste(Model model) {
-		model.addAttribute("playlists", daoPlaylist.findAll());
+	public String addArtiste(Model model, Authentication auth) {
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 		return "artisteForm";
 	}
 
@@ -51,9 +55,9 @@ public class ArtisteController {
 
 	@GetMapping("/royalty-modifier-artiste")
 	@IsAdmin
-	public String modifArtiste(@RequestParam int id, Model model) {
+	public String modifArtiste(@RequestParam int id, Model model, Authentication auth) {
 		model.addAttribute("artiste", daoArtiste.findById(id).get());
-		model.addAttribute("playlists", daoPlaylist.findAll());
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());;
 		return "artisteForm";
 	}
 
@@ -65,9 +69,10 @@ public class ArtisteController {
 	
 	@GetMapping("/voirAlbums")
 	@Transactional
-	public String voirAlbum(@RequestParam int id, Model model){
+	public String voirAlbum(@RequestParam int id, Model model, Authentication auth){
 		Hibernate.initialize(daoArtiste.findById(id).get().getAlbums());
 		model.addAttribute("albums", daoArtiste.findById(id).get().getAlbums());
+		model.addAttribute("playlists", this.daoCompte.findByEmail(auth.getName()).getPlaylists());
 		return "albumListe";
 	}
 
