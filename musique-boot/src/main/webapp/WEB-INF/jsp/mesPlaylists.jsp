@@ -16,7 +16,7 @@
 			<thead>
 				<tr>
 					<th scope="col">Nom</th>
-					<th scope="col">Durée total</th>
+					<th scope="col">Durée totale</th>
 					<th scope="col">Nombre de chansons</th>
 					<th scope="col">Chansons</th>
 					<th scope="col">Supprimmer / Modifier</th>

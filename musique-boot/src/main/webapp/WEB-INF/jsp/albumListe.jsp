@@ -18,7 +18,7 @@
 								<tr>
 									<th scope="col">Nom</th>
 									<th scope="col">Date de parution</th>
-									<th scope="col">Durée total</th>
+									<th scope="col">Durée totale</th>
 									<th scope="col">Nombre de chansons</th>
 									<th scope="col">Artistes</th>
 									<th scope="col">Chansons</th>
