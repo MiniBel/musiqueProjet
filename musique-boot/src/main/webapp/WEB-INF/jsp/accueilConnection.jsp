@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Royalty</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -80,7 +80,7 @@
 			</div>
 			<div class="col-md-4 text-center text-white"
 				style="margin-top: 50px;">
-				<h4>Profite de l'écoute et du t�l�chargement de milliers de
+				<h4>Profite de l'écoute et du téléchargement de milliers de
 					chansons GRATUITEMENT.</h4>
 				<i class="bi bi-speaker" style="font-size: 50px;"></i> <i
 					class="bi bi-save-fill" style="font-size: 50px;"></i> <i
@@ -88,13 +88,10 @@
 			</div>
 			<div class="col-md-4 text-center text-white"
 				style="margin-top: 50px;">
-				<h4 style="margin-bottom: 38px;">Cr�e des playlists � l'infini
+				<h4 style="margin-bottom: 38px;">Crée des playlists ? l'infini
 					!</h4>
 				<i class="bi bi-collection-play" style="font-size: 50px;"></i>
 			</div>
-			<!-- <div class="col-12 text-center" style="color: #02a675;">
-                <h1>N'h�sites plus et rejoins ROYALTY </h1>
-            </div> -->
 
 
 		</div>

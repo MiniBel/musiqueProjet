@@ -2,10 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+
 <!DOCTYPE html >
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>${ title}</title>
 <!-- CSS only -->
 <link
@@ -111,9 +112,9 @@
 						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 							<li><a href="royalty-mesPlaylists" class="link-light rounded">Voir mes playlists</a></li>
 							<li><a href="#" class="link-light rounded">Mon profil</a></li>
-							<li><a href="#" class="link-light rounded">Param�tres</a></li>
+							<li><a href="#" class="link-light rounded">Paramètres</a></li>
 							<li><a href="accueil-connection" class="link-light rounded">Se
-									d�connecter</a></li>
+									déconnecter</a></li>
 						</ul>
 					</div>
 				</li>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t"%>
 
@@ -17,7 +16,7 @@
 			<thead>
 				<tr>
 					<th scope="col">Nom</th>
-					<th scope="col">Durée total</th>
+					<th scope="col">DurÃ©e total</th>
 					<th scope="col">Nombre de chansons</th>
 					<th scope="col">Chansons</th>
 					<th scope="col">Supprimmer / Modifier</th>
