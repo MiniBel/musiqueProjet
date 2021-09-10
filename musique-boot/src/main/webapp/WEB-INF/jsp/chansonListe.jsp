@@ -12,6 +12,7 @@
 						<table class="table table-striped text-center">
 							<thead>
 								<tr>
+									<th></th>
 									<th>Titre</th>
 									<th>Durée</th>
 									<th>Album</th>
@@ -25,6 +26,7 @@
 							<tbody>
 								<c:forEach items="${ chansons }" var="chanson">
 									<tr>
+										<td><audio controls src="media/${ chanson.titre }.mp3"></audio></td>
 										<td>${ chanson.titre }</td>
 										<td>${ chanson.duree }</td>
 										<td><a href="voirAlbumsChanson?id=${ chanson.id }" class="btn"
