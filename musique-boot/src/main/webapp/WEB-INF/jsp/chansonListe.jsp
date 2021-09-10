@@ -28,7 +28,7 @@
 									<tr>
 										<td><audio controls src="media/${ chanson.titre }.m4a"></audio></td>
 										<td>${ chanson.titre }</td>
-										<td>${ chanson.duree }</td>
+										<td class="duration">${ chanson.duree }</td>
 										<td><a href="voirAlbumsChanson?id=${ chanson.id }" class="btn"
 												style="width: 200px; background-color: #02a675">Voir les
 												albums</a></td>
@@ -62,6 +62,14 @@
 						</table>
 
 					</div>
+
+
+
+					<script>
+						for (let td of document.querySelectorAll('.duration')) {
+							td.textContent = new Date(parseInt(td.textContent) * 1000).toISOString().substr(11, 8);
+						}
+					</script>
 				</t:layout>
 				</body>
 

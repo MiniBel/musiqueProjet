@@ -26,7 +26,7 @@
 				<c:forEach items="${ playlists }" var="playlist">
 					<tr>
 						<td>${ playlist.nom }</td>
-						<td>${ playlist.dureeTotal }</td>
+						<td class="duration">${ playlist.dureeTotal }</td>
 						<td>${ playlist.nombreChanson }</td>
 						<td><a href="liste-chansons-playlist?id=${ playlist.id}" class="btn"
 							style="width: 200px; background-color: #02a675">Voir les
@@ -40,6 +40,13 @@
 			</tbody>
 		</table>
 	</div>
+
+
+	<script>
+		for (let td of document.querySelectorAll('.duration')) {
+			td.textContent = new Date(parseInt(td.textContent) * 1000).toISOString().substr(11, 8);
+		}
+	</script>
 
 </t:layout>
 

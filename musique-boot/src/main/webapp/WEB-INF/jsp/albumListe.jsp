@@ -33,7 +33,7 @@
 									<tr>
 										<td>${ album.nom }</td>
 										<td>${ album.dateParution }</td>
-										<td>${ album.dureeTotal }</td>
+										<td class="duration">${ album.dureeTotal }</td>
 										<td>${ album.nombreChanson }</td>
 										<td><a href="voirArtistes?id=${ album.id}" class="btn"
 												style="width: 200px; background-color: #02a675">Voir les artistes</a>
@@ -56,5 +56,11 @@
 							</tbody>
 						</table>
 					</div>
+
+					<script>
+						for (let td of document.querySelectorAll('.duration')) {
+							td.textContent = new Date(parseInt(td.textContent) * 1000).toISOString().substr(11, 8);
+						}
+					</script>
 
 				</t:layout>
