@@ -26,7 +26,7 @@
 							<tbody>
 								<c:forEach items="${ chansons }" var="chanson">
 									<tr>
-										<td><audio controls src="media/${ chanson.titre }.mp3"></audio></td>
+										<td><audio controls src="media/${ chanson.titre }.m4a"></audio></td>
 										<td>${ chanson.titre }</td>
 										<td>${ chanson.duree }</td>
 										<td><a href="voirAlbumsChanson?id=${ chanson.id }" class="btn"
