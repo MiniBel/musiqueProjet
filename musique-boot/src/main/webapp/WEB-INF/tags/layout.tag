@@ -108,12 +108,12 @@
 						<h4>Mon compte</h4>
 					</button>
 					<div class="collapse" id="account-collapse">
-						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+						<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small mt-3">
 							<li><a href="royalty-mesPlaylists" class="link-light rounded">Voir mes playlists</a></li>
-							<li><a href="#" class="link-light rounded">Mon profil</a></li>
-							<li><a href="#" class="link-light rounded">Param&egrave;tres</a></li>
-							<li><a href="accueil-connection" class="link-light rounded">Se
-									d&eacute;connecter</a></li>
+							<form method="POST" action="perform_logout">
+								<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }" />
+								<input type="submit" class="btn btn-danger mt-4"  value="Se d&eacute;connecter"/>
+							</form> 
 						</ul>
 					</div>
 				</li>

@@ -32,6 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             .defaultSuccessUrl("/accueil-connecte",false) //en cas de succes on redirige sur /home si on avait pas demande une autre page
             .failureUrl("/accueil-connection?erreur=true") //en cas d'echec de connexion
             .permitAll(); //on autorise tout le monde à acceder à ces ressources
+        
+        //configuration de la déconnexion
+        http.logout()
+            .logoutUrl("/perform_logout")
+            .logoutSuccessUrl("/accueil-connection");
     }
     
 }
